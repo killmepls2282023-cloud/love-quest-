@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приглашение</title>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(255, 100, 50, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(255, 50, 150, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(120, 80, 200, 0.15) 0%, transparent 60%),
+      #0f0c29;
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+  }
+
+  /* ИСПРАВЛЕННАЯ АНИМАЦИЯ */
+  @keyframes floatUp {
+    0% { 
+      transform: translateY(100vh) translateX(0) scale(0.5); 
+      opacity: 0; 
+    }
+    10% { 
+      opacity: 0.8; 
+    }
+    90% { 
+      opacity: 0.8; 
+    }
+    100% { 
+      transform: translateY(-10vh) translateX(20px) scale(1.2); 
+      opacity: 0; 
+    }
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 28px;
+    padding: 35px 25px;
+    max-width: 90%;
+    width: 380px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: fadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    position: relative;
+    z-index: 10;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .envelope {
+    font-size: 45px;
+    display: block;
+    margin-bottom: 5px;
+    animation: floatEnvelope 3s infinite ease-in-out;
+  }
+
+  @keyframes floatEnvelope {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  h1 {
+    font-family: 'Playpen Sans', cursive;
+    font-weight: 700;
+    font-size: 32px;
+    color: #ff9a9e;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255, 154, 158, 0.3);
+    margin-bottom: 10px;
+    animation: fadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+    opacity: 0;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d0d0d0;
+    margin-bottom: 10px;
+    animation: fadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+    opacity: 0;
+  }
+  
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .button-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+    animation: fadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards;
+    opacity: 0;
+  }
+
+  .hugging-character {
+    position: absolute;
+    top: -25px;
+    right: -20px;
+    font-size: 45px;
+    z-index: 20;
+    animation: hugFox 2s infinite ease-in-out;
+    transform-origin: bottom center;
+    pointer-events: none;
+  }
+
+  @keyframes hugFox {
+    0%, 100% { transform: rotate(-5deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.05); }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #1a1a2e;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+  }
+
+  .btn:hover::after {
+    left: 120%;
+  }
+
+  .btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 5px 15px rgba(255, 154, 158, 0.6);
+  }
+    /* Плавное появление для абзацев и картинок */
+  .fade-in-element {
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Задержки, чтобы они появлялись по очереди */
+  .delay-1 { animation-delay: 0.3s; }
+  .delay-2 { animation-delay: 0.6s; }
+  .delay-3 { animation-delay: 0.9s; }
+  .delay-4 { animation-delay: 1.2s; }
+</style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="card">
+    <span class="envelope">💌</span>
+    <h1>Брошке посвящается</h1>
+    <p>Я приготовил для тебя кое-что особенное, квест-игру. Пройди 3 чекпоинта с QR-кодами, после этого мы встретимся. Это не просто подарок - это путешествие по нашим местам и воспоминаниям.</p>
+    <p>В конце тебя ждет сюрприз маброшечка-кошечка.</p>
+    
+    <div class="button-wrapper">
+      <span class="hugging-character">🦊</span>
+      <a href="step1.html" class="btn">Начать квест</a>
+    </div>
+    
+  </div>
+
+  <script>
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 40; 
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      const size = Math.random() * 8 + 2;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Разбрасываем по всему экрану по горизонтали
+      particle.style.left = `${Math.random() * 100}%`;
+      
+      // Скорость от 4 до 10 секунд (быстрее)
+      const duration = Math.random() * 6 + 4;
+      particle.style.animationDuration = `${duration}s`;
+      
+      // Отрицательная задержка! Это заставит их появиться сразу по всей высоте экрана
+      particle.style.animationDelay = `-${Math.random() * duration}s`;
+      
+      if (Math.random() > 0.5) {
+          particle.style.background = 'rgba(255, 154, 158, 0.6)';
+      }
+      particle.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)';
+
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>

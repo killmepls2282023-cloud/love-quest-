@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Точка 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(255, 100, 50, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(255, 50, 150, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(120, 80, 200, 0.15) 0%, transparent 60%),
+      #0f0c29;
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 28px;
+    padding: 35px 25px;
+    max-width: 90%;
+    width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: fadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    position: relative;
+    z-index: 10;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  h1 {
+    font-family: 'Playpen Sans', cursive;
+    font-weight: 700;
+    font-size: 26px;
+    color: #ff9a9e;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255, 154, 158, 0.3);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d0d0d0;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  /* Стили для фото */
+  .chat-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 5px 0; /* Уменьшили отступ снизу, чтобы подпись была ближе */
+    width: 100%;
+  }
+
+  .chat-bubble {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0;
+    width: fit-content;
+    max-width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .chat-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Стили для подписи под фото */
+  .photo-caption {
+    font-size: 12px;
+    color: #a0a0a0; /* Серый цвет, чтобы не отвлекал */
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px; /* Отступ до следующего текста */
+    display: block;
+  }
+
+  .quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .quiz-btn {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quiz-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ff9a9e;
+    transform: translateY(-2px);
+  }
+
+  .quiz-btn:active {
+    transform: scale(0.98);
+  }
+
+  .quiz-btn.correct {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4caf50;
+  }
+
+  .quiz-btn.wrong {
+    background: rgba(244, 67, 54, 0.3);
+    border-color: #f44336;
+  }
+
+  .hidden-hint {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 154, 158, 0.1);
+    border: 1px solid #ff9a9e;
+    border-radius: 16px;
+    animation: fadeUp 1s ease-out forwards;
+  }
+
+  .hidden-hint h2 {
+    font-family: 'Playpen Sans', cursive;
+    color: #ff9a9e;
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .hidden-hint p {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .error-msg {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 15px;
+    display: none;
+  }
+    /* Плавное появление для абзацев и картинок */
+  .fade-in-element {
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Задержки, чтобы они появлялись по очереди */
+  .delay-1 { animation-delay: 0.3s; }
+  .delay-2 { animation-delay: 0.6s; }
+  .delay-3 { animation-delay: 0.9s; }
+  .delay-4 { animation-delay: 1.2s; }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Наше укромное местечко</h1>
+    
+    <p>Там происходили самые кринжовые ситуации, твой легендарный шухер, когда родители твои нас спалили... а еще какая-то алкашка просила тебя такси ей заказать и главное - надругательство над великом чужим T-T</p>
+
+    <div class="chat-container">
+      <div class="chat-bubble">
+        <img src="IMG_1859.png" alt="Наше фото" class="chat-image">
+      </div>
+    </div>
+    
+    <!-- ВОТ ТУТ ПОДПИСЬ ПОД ФОТО. Меняй текст в скобках -->
+    <span class="photo-caption">(ОЧЕНЬ скоро достану.)</span>
+
+    <p><strong>Вопрос:</strong> А помнишь, за кого нас посчитал тот мент который застукал нас? </p>
+
+    <div class="quiz-container" id="quizBlock">
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Школотой</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Наркоманами</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Кладменами</button>
+    </div>
+    
+    <div class="error-msg" id="errorMsg">Неа, не угадала! Подумай еще.</div>
+
+    <!-- Скрытый блок с финальной подсказкой -->
+    <div class="hidden-hint" id="hintBlock">
+      <h2>Ты почти у цели моя сладкая! ✨</h2>
+      <p>А теперь иди в свой подъезд. Тебя ждет последний QR-код на двери с домофоном, отсканируй его.</p>
+    </div>
+
+  </div>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      const errorMsg = document.getElementById('errorMsg');
+      const hintBlock = document.getElementById('hintBlock');
+      const quizBlock = document.getElementById('quizBlock');
+
+      if (isCorrect) {
+        button.classList.add('correct');
+        errorMsg.style.display = 'none';
+        
+        setTimeout(() => {
+          quizBlock.style.display = 'none';
+          hintBlock.style.display = 'block';
+        }, 600);
+      } else {
+        button.classList.add('wrong');
+        errorMsg.style.display = 'block';
+        
+        setTimeout(() => {
+          button.classList.remove('wrong');
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
