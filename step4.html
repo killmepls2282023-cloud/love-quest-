@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Точка 2</title>
+<title>Точка 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,11 +73,11 @@
     text-align: left;
   }
 
-  /* Контейнер для картинки (если захочешь вставить скрин или фото) */
+  /* Стили для фото */
   .chat-container {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 20px 0 5px 0; /* Уменьшили отступ снизу, чтобы подпись была ближе */
     width: 100%;
   }
 
@@ -99,7 +99,16 @@
     display: block;
   }
 
-  /* Стили для кнопок-ответов */
+  /* Стили для подписи под фото */
+  .photo-caption {
+    font-size: 12px;
+    color: #a0a0a0; /* Серый цвет, чтобы не отвлекал */
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px; /* Отступ до следующего текста */
+    display: block;
+  }
+
   .quiz-container {
     display: flex;
     flex-direction: column;
@@ -142,7 +151,6 @@
     border-color: #f44336;
   }
 
-  /* Скрытый блок с подсказкой */
   .hidden-hint {
     display: none;
     margin-top: 20px;
@@ -193,31 +201,33 @@
 <body>
 
   <div class="card">
-    <h1>Обнимашки</h1>
+    <h1>Наше укромное местечко</h1>
     
-    <p>Хочу снова и снова тебя обнимать, ты самая родная и хорошая. </p>
-    
-     
+    <p>Там происходили самые кринжовые ситуации, твой легендарный шухер, когда родители твои нас спалили... а еще какая-то алкашка просила тебя такси ей заказать и главное - надругательство над великом чужим T-T</p>
+
     <div class="chat-container">
       <div class="chat-bubble">
-        <img src="IMG_3849 (1).jpg" alt="Фото" class="chat-image">
+        <img src="IMG_1859.png" alt="Наше фото" class="chat-image">
       </div>
     </div>
- 
+    
+    <!-- ВОТ ТУТ ПОДПИСЬ ПОД ФОТО. Меняй текст в скобках -->
+    <span class="photo-caption">(ОЧЕНЬ скоро достану.)</span>
 
-    <p><strong>Вопрос:</strong> Кем нам является Мурка?</p>
+    <p><strong>Вопрос:</strong> А помнишь, за кого нас посчитал тот мент который застукал нас? </p>
 
     <div class="quiz-container" id="quizBlock">
-      <button class="quiz-btn" onclick="checkAnswer(this, true)">Дочкой</button>
-      <button class="quiz-btn" onclick="checkAnswer(this, false)">Кошкой</button>
-      <button class="quiz-btn" onclick="checkAnswer(this, false)">Сыном</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Школотой</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, false)">Наркоманами</button>
+      <button class="quiz-btn" onclick="checkAnswer(this, true)">Кладменами</button>
     </div>
     
     <div class="error-msg" id="errorMsg">Неа, не угадала! Подумай еще.</div>
 
+    <!-- Скрытый блок с финальной подсказкой -->
     <div class="hidden-hint" id="hintBlock">
-      <h2>Умничка! ✨</h2>
-      <p>Так-с теперь отправляйся на наше самое посещаемое место летом прошлого года. Нас там еще менты ловили и спрашивали сколько нам лет.. там еще вид на озеро и алкаши спящие, ищи у скамеек.</p>
+      <h2>Ты почти у цели моя сладкая! ✨</h2>
+      <p>А теперь иди в свой подъезд. Тебя ждет последний QR-код на двери с домофоном, отсканируй его.</p>
     </div>
 
   </div>
